@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap');
+
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+* {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  scrollbar-width: thin;
+  scrollbar-color: #414141 #2a2b30;
+}
+
+body {
+  background: #2a2b30;
+}
+
+input:focus {
+  outline: none;
+}
