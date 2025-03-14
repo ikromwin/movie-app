@@ -29,6 +29,8 @@ const SearchMoviesList = () => {
                 </form>
             </header>
 
+
+
             {(query && movies.length > 0) &&
                 <div className='bg-[#414141] p-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-10 gap-4'>
                     {query && movies.map((movie) => (

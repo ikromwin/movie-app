@@ -2,7 +2,6 @@ import { navLinks } from './data/navLinks';
 import { NavLink, Route, Routes } from "react-router";
 
 import HomePage from './pages/home/Home';
-import WatchlistPage from './pages/watchlist/Watchlist';
 import MovieDetails from './pages/movie-details/MovieDetails';
 
 
@@ -33,7 +32,6 @@ function App() {
 
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/watchlist" element={<WatchlistPage />} />
           <Route path="/movie/:id" element={<MovieDetails />} />
         </Routes>
 

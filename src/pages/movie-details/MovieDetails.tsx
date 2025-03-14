@@ -1,7 +1,6 @@
 import { NavLink, useParams } from "react-router-dom";
 import { useMovieDetails } from "../../hooks/useMovies";
-import { Undo2, Star, Bookmark } from "lucide-react";
-import { addToWatchlist } from "../../data/watchLists";
+import { Undo2, Star } from "lucide-react";
 
 interface Genre {
     id: number;
@@ -37,7 +36,7 @@ const MovieDetails = () => {
                     <ul>
                         <li><h1 className="text-3xl font-medium font-bold text-white">{movie.title}</h1></li>
                         <li className="mt-6 flex gap-4 items-center">
-                            <button onClick={() => addToWatchlist(movie)} className="flex items-center hover:bg-[yellow] gap-2 bg-white py-2 px-2.5 rounded text-sm font-light text-black transition-all"><Bookmark size={18} /> Watchlist</button>
+                            
                             <span className="p-1.5 px-2.5 border border-1 border-white rounded text-sm">HD</span>
                             <div className="flex items-center gap-1 text-[#ffc800] text-sm font-medium"><Star size={15} color="#ffc800" fill="#ffc800" /> {movie.popularity}</div>
                         </li>
