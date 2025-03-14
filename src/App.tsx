@@ -33,7 +33,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/watchlists" element={<WatchlistPage />} />
+          <Route path="/watchlist" element={<WatchlistPage />} />
           <Route path="/movie/:id" element={<MovieDetails />} />
         </Routes>
 

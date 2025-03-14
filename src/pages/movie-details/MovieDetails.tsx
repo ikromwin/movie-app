@@ -1,6 +1,7 @@
 import { NavLink, useParams } from "react-router-dom";
 import { useMovieDetails } from "../../hooks/useMovies";
 import { Undo2, Star, Bookmark } from "lucide-react";
+import { addToWatchlist } from "../../data/watchLists";
 
 interface Genre {
     id: number;
@@ -10,6 +11,7 @@ interface Genre {
 const MovieDetails = () => {
     const { id } = useParams();
     const { data: movie, isLoading, error } = useMovieDetails(Number(id));
+    console.log(movie);
 
     if (isLoading) return <p>Loading...</p>;
     if (error) return <p>Error loading movie details.</p>;
@@ -35,7 +37,7 @@ const MovieDetails = () => {
                     <ul>
                         <li><h1 className="text-3xl font-medium font-bold text-white">{movie.title}</h1></li>
                         <li className="mt-6 flex gap-4 items-center">
-                            <button className="flex items-center hover:bg-[yellow] gap-2 bg-white py-2 px-2.5 rounded text-sm font-light text-black transition-all"><Bookmark size={18} /> Watchlist</button>
+                            <button onClick={() => addToWatchlist(movie)} className="flex items-center hover:bg-[yellow] gap-2 bg-white py-2 px-2.5 rounded text-sm font-light text-black transition-all"><Bookmark size={18} /> Watchlist</button>
                             <span className="p-1.5 px-2.5 border border-1 border-white rounded text-sm">HD</span>
                             <div className="flex items-center gap-1 text-[#ffc800] text-sm font-medium"><Star size={15} color="#ffc800" fill="#ffc800" /> {movie.popularity}</div>
                         </li>
@@ -58,9 +60,9 @@ const MovieDetails = () => {
             </div>
 
             <img
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
                 alt={movie.title}
-                className="absolute top-0 left-0 w-full h-full object-cover blur-2xl"
+                className="absolute top-0 left-0 w-full h-full object-cover"
             />
         </div>
     );

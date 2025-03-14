@@ -19,17 +19,14 @@ const SearchMoviesList = () => {
 
     return (
         <div className="sticky top-0 z-10 ">
-            <header className="w-full shadow-lg flex justify-between items-center bg-[#2a2b30]">
-                <div className="pl-8  w-full  flex items-center">
-                    <Search size={20} color='yellow' />
-                    <form className=" w-full " onChange={handleSearch} action="/search">
-                        <input value={query} type="search" onChange={(e) => setQuery(e.target.value)} className="w-full p-6 pl-8 bg-transparent font-light text-[yellow] placeholder:text-[yellow] placeholder:opacity-60 text-white opacity-100" placeholder="Search..." />
-                    </form>
-                </div>
-
-                <button className='p-6 bg-[yellow] text-black h-full'>
-                    <Mic />
-                </button>
+            <header className="pl-8 w-full shadow-lg flex justify-between items-center bg-[#2a2b30]">
+                <Search size={20} color='yellow' />
+                <form className="w-full flex justify-between items-center" onChange={handleSearch} action="/search">
+                    <input value={query} type="search" onChange={(e) => setQuery(e.target.value)} className="w-full p-6 pl-8 bg-transparent font-light text-[yellow] placeholder:text-[yellow] placeholder:opacity-60 text-white opacity-100" placeholder="Search..." />
+                    <button className='p-6 bg-[yellow] text-black h-full'>
+                        <Mic />
+                    </button>
+                </form>
             </header>
 
             {(query && movies.length > 0) &&
