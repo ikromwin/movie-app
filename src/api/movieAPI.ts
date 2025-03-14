@@ -13,3 +13,11 @@ export const getMovieDetails = async (movieId: number) => {
     const response = await axiosInstance.get(`movie/${movieId}`);
     return response.data;
 };
+
+// Fetch Movie Search Results
+export const searchMovies = async (query: string, page = 1) => {
+    const response = await axiosInstance.get(`search/movie`, {
+        params: { query, page },
+    });
+    return response.data;
+};
