@@ -2,15 +2,17 @@ import { NavLink, useParams } from "react-router-dom";
 import { useMovieDetails } from "../../hooks/useMovies";
 import { Undo2, Star, Bookmark } from "lucide-react";
 
+interface Genre {
+    id: number;
+    name: string;
+}
+
 const MovieDetails = () => {
     const { id } = useParams();
-    const { data: movie, isLoading, error } = useMovieDetails(id);
+    const { data: movie, isLoading, error } = useMovieDetails(Number(id));
 
     if (isLoading) return <p>Loading...</p>;
     if (error) return <p>Error loading movie details.</p>;
-
-    console.log(movie);
-    console.log(movie.genres)
 
     return (
         <div className="w-full">
@@ -39,10 +41,9 @@ const MovieDetails = () => {
                         </li>
                         <li><summary className="mt-6 font-light text-sm max-w-[800px]">{movie.overview}</summary></li>
                         <li className="mt-6 grid gap-1">
-
                             <div className="flex items-center gap-1 text-white text-sm font-light"><b>Realized:</b> {(movie.release_date)}</div>
                             <div className="flex items-center gap-1 text-white text-sm font-light"><b>Genre:</b>
-                                {movie.genres.map((g, index) => (
+                                {movie.genres.map((g: Genre, index: number) => (
                                     <span className="font-light" key={g.id}>
                                         {g.name}
                                         {index < movie.genres.length - 1 ? ", " : ""}

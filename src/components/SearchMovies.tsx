@@ -1,26 +1,20 @@
 import { useState } from "react";
-// import { useSearchParams } from "react-router-dom";
 import { Search, Mic } from 'lucide-react';
 import { searchMovies } from "../api/movieAPI";
-import MovieList from '../components/MovieList';
 import { NavLink } from "react-router-dom";
 
 
 const SearchMoviesList = () => {
-    // const [searchParams, setSearchParams] = useSearchParams();
     const [query, setQuery] = useState("");
-    const [movies, setMovies] = useState([]);
+    const [movies, setMovies] = useState<{ id: number; poster_path: string | null }[]>([]);
 
-    const handleSearch = async (e) => {
+
+    const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // setSearchParams({ q: query });
         const results = await searchMovies(query);
         setMovies(results.results);
-
-        if (movies.length < 0) {
-            alert("No movies found")
-        }
     };
+
 
 
     return (
@@ -41,7 +35,7 @@ const SearchMoviesList = () => {
             {(query && movies.length > 0) &&
                 <div className='bg-[#414141] p-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-10 gap-4'>
                     {query && movies.map((movie) => (
-                        <NavLink to={"/movie/" + movie.id} className="hover:-translate-y-1 transition-transform">
+                        <NavLink to={`/movie/${movie.id}`} className="hover:-translate-y-1 transition-transform">
                             {
                                 movie.poster_path ?
                                     <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="title" className="object-cover h-full rounded-lg group-hover:scale-[1.02] transition" />
